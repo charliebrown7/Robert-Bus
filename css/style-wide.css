@@ -1,0 +1,13 @@
+/* Basic */
+
+	body, input, select, textarea {
+		font-size: 12pt;
+		line-height: 1.5em;
+	}
+	
+/* Google Search */
+
+	#google {
+		margin-left: 70%;
+		margin-top: 0.7%;
+	}

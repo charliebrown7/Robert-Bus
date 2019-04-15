@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Robert Bus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <noscript>
+      <link rel="stylesheet" href="css/skel.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/style-wide.css" />
+    </noscript>
+    <script src="app.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="init.js"></script>
+  </head>
+  <body style="text-align:center;color:white" onload="callSave();">
+    <div class="wrapper style1">
+      <h1 style="font-size:350%">Robert Bus</h1><br>
+      <div id="extra">
+        <div class="container">
+          <br>
+          <select id="stop1" onchange="display()">
+            <option value="stop_area:0:SA:8727602">GARE D'ENGHIEN-LES-BAINS</option>
+            <option value="stop_area:0:SA:8727603">GARE DE CHAMP DE COURSES D'ENGHIEN</option>
+            <option value="stop_area:0:SA:60:598">GENDARMERIE</option>
+            <option value="stop_area:0:SA:60:575">BONNE AUBERGE</option>
+            <option value="stop_area:0:SA:60:634">LES TOURELLES</option>
+            <option value="stop_area:0:SA:60:342">MONT D'EAUBONNE</option>
+            <option value="stop_area:0:SA:60:334">BOIS JACQUES</option>
+            <option value="stop_area:0:SA:60:346">TILLEULS</option>
+            <option value="stop_area:0:SA:60:336">HOTEL DE VILLE</option>
+            <option value="stop_area:0:SA:60:338">JEANNE D'ARC</option>
+            <option value="stop_area:0:SA:60:344">LA SABLIERE</option>
+            <option value="stop_area:0:SA:60:340">CHAUSSEE JULES CESAR</option>
+            <option value="stop_area:0:SA:8727605">GARE D'ERMONT-EAUBONNE</option>
+          </select>
+   
+          <p>Vers : GARE D'ERMONT-EAUBONNE</p>
+          <p style='font-size:200%' id="back" >Chargement ...</p>
+  
+          <select id="stop2" onchange="display()">
+            <option value="stop_area:0:SA:8727602">GARE D'ENGHIEN-LES-BAINS</option>
+            <option value="stop_area:0:SA:8727603">GARE DE CHAMP DE COURSES D'ENGHIEN</option>
+            <option value="stop_area:0:SA:60:598">GENDARMERIE</option>
+            <option value="stop_area:0:SA:60:575">BONNE AUBERGE</option>
+            <option value="stop_area:0:SA:60:634">LES TOURELLES</option>
+            <option value="stop_area:0:SA:60:342">MONT D'EAUBONNE</option>
+            <option value="stop_area:0:SA:60:334">BOIS JACQUES</option>
+            <option value="stop_area:0:SA:60:346">TILLEULS</option>
+            <option value="stop_area:0:SA:60:336">HOTEL DE VILLE</option>
+            <option value="stop_area:0:SA:60:338">JEANNE D'ARC</option>
+            <option value="stop_area:0:SA:60:344">LA SABLIERE</option>
+            <option value="stop_area:0:SA:60:340">CHAUSSEE JULES CESAR</option>
+            <option value="stop_area:0:SA:8727605">GARE D'ERMONT-EAUBONNE</option>
+          </select>
+  
+          <p>Vers : GARE D'ENGHIEN-LES-BAINS</p>
+          <p style='font-size:200%' id="go" >Chargement ...</p>
+          
+          <input type="button" onclick="callSave()" value="Save" >
+          <input type="button" onclick="display()" value="Refresh" ><br>
+        </div>
+      </div>
+    </div>
+   
+   <script>
+     function callSave() {
+       let stop1 = document.getElementById("stop1").value;
+       let stop2 = document.getElementById("stop2").value;
+       save(stop1); save(stop2);
+       setTimeout(display, 3000);
+     }
+     function display() {
+       let stop1 = document.getElementById("stop1").value;
+       let stop2 = document.getElementById("stop2").value;
+       go(stop2); back(stop1);
+       setTimeout(display, 30000);
+     }
+   </script>
+ 
+  </body>
+</html>

@@ -1,0 +1,11 @@
+/* Basic */
+
+	body, input, select, textarea {
+		font-size: 11pt;
+	}
+	
+/* Google Search */
+
+	#google {
+		margin-left: 0%;
+	}
