@@ -25,8 +25,7 @@ else if (direction0 == "GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)") {
       else {
           timeLeft = timeLeft - currentMinutes;
       }
-      document.getElementById(doc).innerHTML = "<strong>"+depart.slice(9,11)+"h"+depart.slice(11,13)+"</strong> dans <strong>"+timeLeft+"</strong> minutes !</p>";
-      return null;
+      return document.getElementById(doc).innerHTML = "<strong>"+depart.slice(9,11)+"h"+depart.slice(11,13)+"</strong> dans <strong>"+timeLeft+"</strong> minutes !</p>";
 }
 
 function save(stop) {
@@ -34,7 +33,7 @@ function save(stop) {
 	var scheduleN = [];
 	var scheduleT = [];
 
-	let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=200&apikey=';
+	let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=200&apikey=810bbc8b4a96f25b28f1f45112762a585233e89c5f0eb9bb0bf1f580';
         console.log(request);
 
 	fetch(request)
@@ -82,7 +81,7 @@ else if (direction0 == "GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)") {
   doc = "go";
 }
 
-let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=5&apikey=';
+let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=5&apikey=810bbc8b4a96f25b28f1f45112762a585233e89c5f0eb9bb0bf1f580';
 console.log(request);
 
 fetch(request)
@@ -115,11 +114,42 @@ fetch(request)
       else {
           timeLeft = timeLeft - currentMinutes;
       }
-      document.getElementById(doc).innerHTML = "<strong>"+depart.slice(9,11)+"h"+depart.slice(11,13)+"</strong> dans <strong>"+timeLeft+"</strong> minutes !";
-      return null ;
+      return document.getElementById(doc).innerHTML = "<strong>"+depart.slice(9,11)+"h"+depart.slice(11,13)+"</strong> dans <strong>"+timeLeft+"</strong> minutes !";
 })
   .catch(err => {
-      document.getElementById(doc).innerHTML = "Aucunes infos.";
+      return document.getElementById(doc).innerHTML = "Aucunes infos.";
   })
+
+}
+
+function accurate(stop, direction0) {
+
+let doc;
+let direct;
+if(direction0 == "GARE D'ERMONT-EAUBONNE (Ermont)") {
+  doc = "back";
+  direct = "A"; }
+if (direction0 == "GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)") {
+  doc = "go";
+  direct = "R"; }
+
+let request = "https://api-lab-trone-stif.opendata.stif.info/service/tr-vianavigo/departures?line_id=016096001%3A14&stop_point_id="+stop+"&apikey=103bd4c9f914fdd20ee0c4367c84630d52260ff00a81694c36cec7b2";
+console.log(request);
+
+fetch(request)
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+      let sched = [];
+      for (let i=0; i<4; i++) {
+          if (data[i]['sens'] === direct){
+              sched.push(data[i]['time']); }
+       }
+       return document.getElementById(doc).innerHTML = "Prochains : <strong>"+sched[0]+"</strong> et <strong>"+sched[1]+"</strong> minutes !";
+     })
+     .catch(err => {
+       console.log(err);
+      })
 
 }
