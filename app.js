@@ -34,7 +34,7 @@ function save(stop) {
 	var scheduleN = [];
 	var scheduleT = [];
 
-	let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=200&apikey=810bbc8b4a96f25b28f1f45112762a585233e89c5f0eb9bb0bf1f580';
+	let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=200&apikey=';
         console.log(request);
 
 	fetch(request)
@@ -82,7 +82,7 @@ else if (direction0 == "GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)") {
   doc = "go";
 }
 
-let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=5&apikey=810bbc8b4a96f25b28f1f45112762a585233e89c5f0eb9bb0bf1f580';
+let request = 'https://opendata.stif.info/service/api-stif-horaires/stop_areas/'+stop+'/lines/line%3A0%3A016096001%3A14/departures?count=5&apikey=';
 console.log(request);
 
 fetch(request)
