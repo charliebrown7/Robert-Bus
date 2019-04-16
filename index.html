@@ -14,7 +14,7 @@
     <script src="js/skel.min.js"></script>
     <script src="init.js"></script>
   </head>
-  <body style="text-align:center;color:white" onload="callSave();">
+  <body style="text-align:center;color:white" onload="refresh();">
     <div class="wrapper style1">
       <h1 style="font-size:350%">Robert Bus</h1><br>
       <div id="extra">
@@ -58,8 +58,9 @@
           <p>Vers : GARE D'ENGHIEN-LES-BAINS</p>
           <p style='font-size:200%' id="go" >Chargement ...</p>
           
+          <input type="button" onclick="refresh()" value="Refresh" >
           <input type="button" onclick="callSave()" value="Save" >
-          <input type="button" onclick="display()" value="Refresh" ><br>
+          <input type="button" onclick="display()" value="Offline refresh" ><br>
         </div>
       </div>
     </div>
@@ -69,13 +70,18 @@
        let stop1 = document.getElementById("stop1").value;
        let stop2 = document.getElementById("stop2").value;
        save(stop1); save(stop2);
-       setTimeout(display, 3000);
      }
      function display() {
        let stop1 = document.getElementById("stop1").value;
        let stop2 = document.getElementById("stop2").value;
-       go(stop2); back(stop1);
-       setTimeout(display, 30000);
+       go(stop1,"GARE D'ERMONT-EAUBONNE (Ermont)");
+       go(stop2,"GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)");
+     }
+     function refresh() {
+       let stop1 = document.getElementById("stop1").value;
+       let stop2 = document.getElementById("stop2").value;
+       goBackOnline(stop1,"GARE D'ERMONT-EAUBONNE (Ermont)");
+       goBackOnline(stop2,"GARE D'ENGHIEN-LES-BAINS (Enghien-les-Bains)");
      }
    </script>
  
